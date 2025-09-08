@@ -2,6 +2,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import scraperRoutes from './src/routes/scraper.js';
+import loadTestStreamRoutes from './src/routes/loadtest-stream.js';
 import statusMonitor from 'express-status-monitor';
 import basicAuth from 'express-basic-auth';
 
@@ -48,6 +49,10 @@ app.get('/', (req, res, next) => {
 });
 
 app.use('/api/scraper', scraperRoutes);
+
+if (process.env.TEST_MODE === 'true') {
+    app.use('/api', loadTestStreamRoutes);
+}
 
 // Servir archivos estáticos para todas las demás rutas (si es necesario)
 // Si / es la única ruta de test, puedes eliminar esto y solo usar el middleware anterior.
