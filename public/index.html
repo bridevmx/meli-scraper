@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scraper API Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold mb-4">Scraper API Test</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Offers -->
+            <div class="bg-white p-4 rounded-lg shadow">
+                <h2 class="text-xl font-bold mb-2">Offers</h2>
+                <div class="flex items-center mb-2">
+                    <label for="offers-max-pages" class="mr-2">Max Pages:</label>
+                    <input type="number" id="offers-max-pages" class="border rounded px-2 py-1 w-20" value="1">
+                </div>
+                <button id="scrape-offers" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Scrape Offers
+                </button>
+            </div>
+
+            <!-- Search -->
+            <div class="bg-white p-4 rounded-lg shadow">
+                <h2 class="text-xl font-bold mb-2">Search</h2>
+                <div class="flex items-center mb-2">
+                    <label for="search-query" class="mr-2">Query:</label>
+                    <input type="text" id="search-query" class="border rounded px-2 py-1 flex-grow">
+                </div>
+                <div class="flex items-center mb-2">
+                    <label for="search-max-pages" class="mr-2">Max Pages:</label>
+                    <input type="number" id="search-max-pages" class="border rounded px-2 py-1 w-20" value="1">
+                </div>
+                <button id="scrape-search" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                    Scrape Search
+                </button>
+            </div>
+
+            <!-- Product Page -->
+            <div class="bg-white p-4 rounded-lg shadow">
+                <h2 class="text-xl font-bold mb-2">Product Page</h2>
+                <div class="flex items-center mb-2">
+                    <label for="product-url" class="mr-2">URL:</label>
+                    <input type="text" id="product-url" class="border rounded px-2 py-1 flex-grow">
+                </div>
+                <button id="scrape-product" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
+                    Scrape Product
+                </button>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <h2 class="text-xl font-bold mb-2">Results</h2>
+            <pre id="results" class="bg-gray-200 p-4 rounded-lg overflow-x-auto"></pre>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
