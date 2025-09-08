@@ -1,0 +1,17 @@
+# Git repository files
+.git
+.gitignore
+
+# Node.js dependencies (will be installed inside the container)
+node_modules
+
+# Environment variables file (should not be in the image)
+.env
+
+# Docker files
+Dockerfile
+.dockerignore
+
+# IDE/Editor specific files
+.idea
+.vscode

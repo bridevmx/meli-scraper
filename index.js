@@ -2,10 +2,37 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import scraperRoutes from './src/routes/scraper.js';
+import statusMonitor from 'express-status-monitor';
+import basicAuth from 'express-basic-auth';
 
 dotenv.config();
 
+// Basic Auth Configuration
+const users = {};
+const user = process.env.STATUS_USER;
+const pass = process.env.STATUS_PASSWORD;
+
+if (user && pass) {
+  users[user] = pass;
+} else {
+  console.warn('STATUS_USER or STATUS_PASSWORD environment variables are not set. The status page will not be protected.');
+}
+
+const authMiddleware = basicAuth({
+  users,
+  challenge: true, // This will cause the browser to show a login dialog.
+});
+
+
 const app = express();
+
+// Apply the status monitor middleware first
+app.use(statusMonitor());
+
+// Protect the /status route with basic auth
+// The status monitor is available by default at /status
+app.use('/status', authMiddleware);
+
 
 app.use(express.json());
 
